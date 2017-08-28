@@ -42,7 +42,7 @@ public class GameHelper {
 
         while (!success & attempts++ < 200) {
             location = (int) (Math.random() * gridSize);
-            System.out.print("попробуем" + location);
+           // System.out.print("попробуем" + location);
             int x = 0;
             success = true;
             while (success && x < comSize) {
@@ -56,7 +56,7 @@ public class GameHelper {
                         success = false;
                     }
                 } else {
-                    System.out.print("используется" + location);
+                    System.out.print("используется " + location);
                     success = false;
                 }
             }
