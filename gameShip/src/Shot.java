@@ -1,10 +1,3 @@
-/**
- * Java. Game Battle Ship
- * Class: Shot
- *
- * @author Sergey Iryupin
- * @version 0.2 dated Aug 22, 2017
- */
 import java.awt.Color;
 import java.awt.Graphics;
 

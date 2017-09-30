@@ -1,10 +1,3 @@
-/**
- * Java. Game Battle Ship
- * Class: Ships
- *
- * @author Sergey Iryupin
- * @version 0.2 dated Aug 22, 2017
- */
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Random;

@@ -1,16 +1,9 @@
-/**
- * Java. Game Battle Ship
- * Class: Cell
- *
- * @author Sergey Iryupin
- * @version 0.2 dated Aug 22, 2017
- */
 import java.awt.Color;
 import java.awt.Graphics;
 
 //Реализация объкта ячейка
 //@x,y  координаты ячейки
-//color цвет   ячейки по умолчанию
+//@color цвет   ячейки по умолчанию
 //RED  цветовая константа означающая смерть ячейки
 class Cell {
     private final Color RED = Color.red;
@@ -22,9 +15,10 @@ class Cell {
         this.y = y;
         color = Color.gray;
     }
-//Геттеры для возращения
+//Геттеры для доступа к переменным X и Y
     int getX() { return x; }
     int getY() { return y; }
+
 //Метод проверки на поподание в ячейку
     boolean checkHit(int x, int y) {
         if (this.x == x && this.y == y) {
@@ -33,10 +27,11 @@ class Cell {
         }
         return false;
     }
-//Состояние ячейки живая или нет, если цвет не RED = true
+//Состояние ячейки живая или нет, по цвету
     boolean isAlive() {
-        return color != RED; // judged by color
+        return color != RED;
     }
+
 //Метод прорисовки  ячейки
     void paint(Graphics g, int cellSize, boolean hide) {
         if (!hide || (hide && color == RED)) {

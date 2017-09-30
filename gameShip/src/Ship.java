@@ -1,13 +1,7 @@
-/**
- * Java. Game Battle Ship
- * Class: Ship
- *
- * @author Sergey Iryupin
- * @version 0.2 dated Aug 22, 2017
- */
 import java.awt.Graphics;
 import java.util.ArrayList;
 
+//Класс реализаци корабля
 class Ship {
     private ArrayList<Cell> cells = new ArrayList<Cell>();
 
@@ -18,7 +12,7 @@ class Ship {
                             y + i * ((position == 1)?1:0)));
     }
 
-    // is ship outside the boundary of the field?
+ //Метод проверки вышел ли корабль за границы поля
     boolean isOutOfField(int bottom, int top) {
         for (Cell cell : cells)
             if (cell.getX() < bottom || cell.getX() > top ||
@@ -26,8 +20,8 @@ class Ship {
                 return true;
         return false;
     }
-
-    boolean isOverlayOrTouch(Ship ctrlShip) { // is ship overlay or touch other ships
+//Метод проверки наложение на другое судно или соприкосновение с ним
+    boolean isOverlayOrTouch(Ship ctrlShip) {
         for (Cell cell : cells)
             if (ctrlShip.isOverlayOrTouchCell(cell))
                 return true;
@@ -43,7 +37,7 @@ class Ship {
                         return true;
         return false;
     }
-
+    //Метод проверки на поподание в корабль
     boolean checkHit(int x, int y) {
         for (Cell cell : cells)
             if (cell.checkHit(x, y))

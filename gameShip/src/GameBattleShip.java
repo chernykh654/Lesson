@@ -1,10 +1,3 @@
-/**
- * Java. Game Battle Ship
- * Class: GameBattleShip Main-Class
- *
- * @author Sergey Iryupin
- * @version 0.3 dated Aug 22, 2017
- */
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -12,20 +5,20 @@ import java.util.*;
 
 class GameBattleShip extends JFrame {
 
-    final String TITLE_OF_PROGRAM = "Battle Ship";
-    final int FIELD_SIZE = 10;
-    final int AI_PANEL_SIZE = 200;
-    final int AI_CELL_SIZE = AI_PANEL_SIZE / FIELD_SIZE;
-    final String BTN_INIT = "New game";
-    final String BTN_EXIT = "Exit";
-    final String YOU_WON = "YOU WON!";
-    final int MOUSE_BUTTON_LEFT = 1; // for mouse listener
+    final String TITLE_OF_PROGRAM = "Морской бой";
+    final int FIELD_SIZE = 10;//Размер поля в ячейках
+    final int PANEL_SIZE = 400;//Размер поля в пикселях
+    final int CELL_SIZE = PANEL_SIZE / FIELD_SIZE;//Размер ячейки
+    final String BTN_INIT = "Новая Игра!";
+    final String BTN_EXIT = "Выход";
+    final String YOU_WON = "Победа";
+    final int MOUSE_BUTTON_LEFT = 1;
     final int MOUSE_BUTTON_RIGHT = 3;
 
-    JTextArea board; // for logging
-    Canvas leftPanel, humanPanel; // for game fields
-    Ships aiShips, humanShips; // set of human's and AI ships
-    Shots humanShots, aiShots; // set of shots from human and AI
+    JTextArea board;
+    Canvas leftPanel; // for game fields
+    Ships aiShips; // set of human's and AI ships
+    Shots humanShots; // set of shots from human and AI
     Random random;
     boolean gameOver;
     int comCount =0 ;
@@ -39,16 +32,16 @@ class GameBattleShip extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
 
-        leftPanel = new Canvas(); // panel for AI ships
-        leftPanel.setPreferredSize(new Dimension(AI_PANEL_SIZE, AI_PANEL_SIZE));
+        leftPanel = new Canvas();
+        leftPanel.setPreferredSize(new Dimension(PANEL_SIZE, PANEL_SIZE));
         leftPanel.setBackground(Color.white);
         leftPanel.setBorder(BorderFactory.createLineBorder(Color.blue));
         leftPanel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
                 super.mouseReleased(e);
-                int x = e.getX()/AI_CELL_SIZE; // coordinates transformation
-                int y = e.getY()/AI_CELL_SIZE;
+                int x = e.getX()/CELL_SIZE; // coordinates transformation
+                int y = e.getY()/CELL_SIZE;
                 if (e.getButton() == MOUSE_BUTTON_LEFT && !gameOver) {
                     if (!humanShots.hitSamePlace(x, y)) {
                         comCount++;
@@ -116,8 +109,8 @@ class GameBattleShip extends JFrame {
     }
 
     void init() { // init all game object
-        aiShips = new Ships(FIELD_SIZE, AI_CELL_SIZE, false);
-        humanShots = new Shots(AI_CELL_SIZE);
+        aiShips = new Ships(FIELD_SIZE, CELL_SIZE, false);
+        humanShots = new Shots(CELL_SIZE);
         board.setText(BTN_INIT);
         gameOver = false;
         random = new Random();
@@ -133,13 +126,9 @@ class GameBattleShip extends JFrame {
                 g.drawLine(0, i*cellSize, FIELD_SIZE*cellSize, i*cellSize);
                 g.drawLine(i*cellSize, 0, i*cellSize, FIELD_SIZE*cellSize);
             }
-            if (cellSize == AI_CELL_SIZE) {
-                humanShots.paint(g);
-                aiShips.paint(g);
-            } else {
-                aiShots.paint(g);
-                humanShips.paint(g);
-            }
+            humanShots.paint(g);
+            aiShips.paint(g);
+
         }
     }
 }
