@@ -16,9 +16,9 @@ class GameBattleShip extends JFrame {
     final int MOUSE_BUTTON_RIGHT = 3;
 
     JTextArea board;
-    Canvas leftPanel; // for game fields
-    Ships aiShips; // set of human's and AI ships
-    Shots humanShots; // set of shots from human and AI
+    Canvas leftPanel;
+    Ships aiShips;
+    Shots humanShots;
     Random random;
     boolean gameOver;
     int comCount =0 ;
@@ -58,7 +58,6 @@ class GameBattleShip extends JFrame {
                     }
                 }
                 if (e.getButton() == MOUSE_BUTTON_RIGHT) { // right mouse
-
                     Shot label = humanShots.getLabel(x, y);
                     if (label != null)
                         humanShots.removeLabel(label);

@@ -50,7 +50,7 @@ class Ship {
             if (cell.isAlive())
                 return true;
         return false;
-    }
+}
 
     void paint(Graphics g, int cellSize, boolean hide) {
         for (Cell cell : cells)
